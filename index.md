@@ -55,6 +55,6 @@ This page is my portfolio of **Python and data projects** as I learn and build t
 ## 📬 Contact
 
 - **GitHub:** [@Iressa8655](https://github.com/Iressa8655)
-- **LinkedIn:** *www.linkedin.com/in/ihanc*
+- **LinkedIn:[LinkedIn](https://www.linkedin.com/in/ihanc)
 
 If you’d like to collaborate on projects in **MSK, health data, or AI**, I’d love to connect.
