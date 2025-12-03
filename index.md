@@ -7,12 +7,20 @@ This page is my portfolio of **Python and data projects** as I learn and build t
 ---
 
 ## 📱 Featured Project
+### 🎬 Investigating Netflix Movies  
+**🔗 View project:** [Click here](https://github.com/Iressa8655/Investigating-Netflix-Movies)
 
+***What this project shows:***
+- Filtering 1990s Netflix **Movies** using pandas  
+- Cleaning duration data (“90 min” → 90)  
+- Finding the most frequent movie duration using `.mode()`  
+- Selecting rows with multiple conditions (genre + duration)  
+- Demonstrating clear EDA logic and interpretation
+- 
 ### 📱 TikTok Data Analysis
 **🔗 View project:** [Click here](https://github.com/Iressa8655/tiktok_data_analysis)
 
-
-**What this project shows:**
+***What this project shows:***
 - Loading and exploring real-world TikTok data in **Jupyter Notebook**
 - Using **Python & pandas** for data cleaning and filtering
 - Summarising patterns in views, engagement, and content
