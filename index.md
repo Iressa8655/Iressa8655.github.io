@@ -16,7 +16,7 @@ This page is my portfolio of **Python and data projects** as I learn and build t
 - Finding the most frequent movie duration using `.mode()`  
 - Selecting rows with multiple conditions (genre + duration)  
 - Demonstrating clear EDA logic and interpretation
-- 
+  
 ### 📱 TikTok Data Analysis
 **🔗 View project:** [Click here](https://github.com/Iressa8655/tiktok_data_analysis)
 
