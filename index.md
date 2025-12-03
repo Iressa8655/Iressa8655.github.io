@@ -9,8 +9,8 @@ This page is my portfolio of **Python and data projects** as I learn and build t
 ## 📱 Featured Project
 
 ### 📱 TikTok Data Analysis
-A beginner-friendly exploratory analysis of TikTok engagement metrics using Python, pandas, and Jupyter Notebook.  
-**🔗 View project:** https://github.com/Iressa8655/tiktok_data_analysis
+**🔗 View project:** [Click here](https://github.com/Iressa8655/tiktok_data_analysis)
+
 
 **What this project shows:**
 - Loading and exploring real-world TikTok data in **Jupyter Notebook**
