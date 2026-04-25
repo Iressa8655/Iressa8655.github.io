@@ -8,10 +8,12 @@ import Awards from '@/components/Awards';
 import Documents from '@/components/Documents';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import SectionBookmarks from '@/components/SectionBookmarks';
 
 const Index = () => (
   <div className="min-h-screen">
     <Navbar />
+    <SectionBookmarks />
     <Hero />
     <About />
     <Research />
