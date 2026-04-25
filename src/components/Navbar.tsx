@@ -2,12 +2,14 @@ import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
-const subPages = [
+type SubPage = { label: string; href: string; external?: boolean };
+
+const subPages: SubPage[] = [
   { label: 'CV & Accomplishments', href: '/' },
-  { label: 'Medicine', href: '/medicine' },
-  { label: 'Technology', href: '/technology' },
-  { label: 'Business', href: '/business' },
-  { label: 'Personal Development', href: '/personal-development' },
+  { label: 'Medicine', href: 'https://iressa8655.github.io/digital-garden/Medicine/', external: true },
+  { label: 'Technology', href: 'https://iressa8655.github.io/digital-garden/Technology/', external: true },
+  { label: 'Business', href: 'https://iressa8655.github.io/digital-garden/Business/', external: true },
+  { label: 'Personal Development', href: 'https://iressa8655.github.io/digital-garden/Personal-Development/', external: true },
 ];
 
 const Navbar = () => {
@@ -51,17 +53,25 @@ const Navbar = () => {
         {/* Desktop */}
         <div className="hidden md:flex items-center gap-1">
           {subPages.map(page => {
-            const active = location.pathname === page.href;
+            const active = !page.external && location.pathname === page.href;
+            const className = `text-sm font-medium px-3 py-2 rounded-full transition-colors ${
+              active
+                ? 'gradient-bg text-white shimmer-btn'
+                : 'text-muted-foreground hover:text-foreground'
+            }`;
+            if (page.external) {
+              return (
+                <a key={page.href} href={page.href} className={className}>
+                  {page.label}
+                </a>
+              );
+            }
             return (
               <Link
                 key={page.href}
                 to={page.href}
                 onClick={() => setMobileOpen(false)}
-                className={`text-sm font-medium px-3 py-2 rounded-full transition-colors ${
-                  active
-                    ? 'gradient-bg text-white shimmer-btn'
-                    : 'text-muted-foreground hover:text-foreground'
-                }`}
+                className={className}
               >
                 {page.label}
               </Link>
@@ -79,15 +89,28 @@ const Navbar = () => {
       {mobileOpen && (
         <div className="md:hidden bg-background/95 backdrop-blur-lg border-t border-border px-6 py-4 space-y-3">
           {subPages.map(page => {
-            const active = location.pathname === page.href;
+            const active = !page.external && location.pathname === page.href;
+            const className = `block w-full text-left text-sm font-medium transition-colors ${
+              active ? 'gradient-text' : 'text-muted-foreground hover:text-foreground'
+            }`;
+            if (page.external) {
+              return (
+                <a
+                  key={page.href}
+                  href={page.href}
+                  onClick={() => setMobileOpen(false)}
+                  className={className}
+                >
+                  {page.label}
+                </a>
+              );
+            }
             return (
               <Link
                 key={page.href}
                 to={page.href}
                 onClick={() => setMobileOpen(false)}
-                className={`block w-full text-left text-sm font-medium transition-colors ${
-                  active ? 'gradient-text' : 'text-muted-foreground hover:text-foreground'
-                }`}
+                className={className}
               >
                 {page.label}
               </Link>
