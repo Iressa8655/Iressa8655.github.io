@@ -30,15 +30,15 @@ const Hero = () => {
         <div className="grid md:grid-cols-5 gap-12 items-center">
           {/* Left */}
           <div className="md:col-span-3 space-y-6">
-            <span className="section-label gradient-text">Clinician · Scientist · Builder</span>
+            <span className="section-label gradient-text">A short introduction</span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
-              I-Han (Iressa) Cheng
+              Hi, I'm Iressa
             </h1>
-            <p className="text-lg font-medium text-foreground/80">
-              MD · MSc Distinction, UCL · Incoming DPhil, Oxford NDORMS
+            <p className="text-lg md:text-xl font-medium text-foreground/80 leading-relaxed max-w-xl" style={{ fontFamily: "'Playfair Display', serif" }}>
+              A clinician data scientist with a bit of experience across medicine, technology, and business — basically a bit of everything, because I'm sort of ADHD-ish.
             </p>
             <p className="text-muted-foreground leading-relaxed max-w-xl">
-              Fairness-aware AI for musculoskeletal population health — UK Biobank, CPRD &amp; Taiwan NHIRD via OMOP CDM
+              I-Han (Iressa) Cheng · MD · MSc Distinction, UCL · Incoming DPhil, Oxford NDORMS. Currently working on fairness-aware AI for musculoskeletal population health using UK Biobank, CPRD &amp; Taiwan NHIRD via OMOP CDM.
             </p>
             <div className="flex flex-wrap gap-3 pt-2">
               <a href="https://orcid.org/0009-0004-5400-1022" target="_blank" rel="noopener" className="px-5 py-2 rounded-full text-sm font-medium border-2 border-transparent gradient-bg text-white shimmer-btn">
