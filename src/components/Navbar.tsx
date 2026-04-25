@@ -1,10 +1,9 @@
-import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
-type SubPage = { label: string; href: string; external?: boolean };
+type NavTab = { label: string; href: string; external?: boolean };
 
-const subPages: SubPage[] = [
+const tabs: NavTab[] = [
   { label: 'CV & Accomplishments', href: '/' },
   { label: 'Medicine', href: 'https://iressa8655.github.io/digital-garden/Medicine/', external: true },
   { label: 'Technology', href: 'https://iressa8655.github.io/digital-garden/Technology/', external: true },
@@ -14,7 +13,6 @@ const subPages: SubPage[] = [
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -24,14 +22,20 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const handleHome = () => {
-    setMobileOpen(false);
+  const handleBrand = () => {
     if (location.pathname !== '/') {
       navigate('/');
     } else {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
+
+  const tabClass = (active: boolean) =>
+    `whitespace-nowrap rounded-full font-medium transition-all duration-300 px-2.5 py-1.5 text-[11px] sm:px-3 sm:py-2 sm:text-sm ${
+      active
+        ? 'gradient-bg text-white shadow-sm'
+        : 'text-muted-foreground hover:text-foreground'
+    }`;
 
   return (
     <nav
@@ -41,83 +45,33 @@ const Navbar = () => {
           : 'bg-transparent py-5'
       }`}
     >
-      <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
+      <div className="max-w-6xl mx-auto px-3 sm:px-6 flex items-center justify-between gap-2 sm:gap-4">
         <button
-          onClick={handleHome}
-          className="gradient-text font-bold text-xl"
+          onClick={handleBrand}
+          className="gradient-text font-bold text-base sm:text-xl shrink-0"
           style={{ fontFamily: "'Playfair Display', serif" }}
         >
           I-Han Cheng
         </button>
 
-        {/* Desktop */}
-        <div className="hidden md:flex items-center gap-1">
-          {subPages.map(page => {
-            const active = !page.external && location.pathname === page.href;
-            const className = `text-sm font-medium px-3 py-2 rounded-full transition-colors ${
-              active
-                ? 'gradient-bg text-white shimmer-btn'
-                : 'text-muted-foreground hover:text-foreground'
-            }`;
-            if (page.external) {
+        <div className="flex items-center gap-0.5 sm:gap-1 flex-nowrap overflow-x-auto">
+          {tabs.map((tab) => {
+            const active = !tab.external && location.pathname === tab.href;
+            if (tab.external) {
               return (
-                <a key={page.href} href={page.href} className={className}>
-                  {page.label}
+                <a key={tab.href} href={tab.href} className={tabClass(false)}>
+                  {tab.label}
                 </a>
               );
             }
             return (
-              <Link
-                key={page.href}
-                to={page.href}
-                onClick={() => setMobileOpen(false)}
-                className={className}
-              >
-                {page.label}
+              <Link key={tab.href} to={tab.href} className={tabClass(active)}>
+                {tab.label}
               </Link>
             );
           })}
         </div>
-
-        {/* Mobile toggle */}
-        <button className="md:hidden text-foreground" onClick={() => setMobileOpen(!mobileOpen)}>
-          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
       </div>
-
-      {/* Mobile menu */}
-      {mobileOpen && (
-        <div className="md:hidden bg-background/95 backdrop-blur-lg border-t border-border px-6 py-4 space-y-3">
-          {subPages.map(page => {
-            const active = !page.external && location.pathname === page.href;
-            const className = `block w-full text-left text-sm font-medium transition-colors ${
-              active ? 'gradient-text' : 'text-muted-foreground hover:text-foreground'
-            }`;
-            if (page.external) {
-              return (
-                <a
-                  key={page.href}
-                  href={page.href}
-                  onClick={() => setMobileOpen(false)}
-                  className={className}
-                >
-                  {page.label}
-                </a>
-              );
-            }
-            return (
-              <Link
-                key={page.href}
-                to={page.href}
-                onClick={() => setMobileOpen(false)}
-                className={className}
-              >
-                {page.label}
-              </Link>
-            );
-          })}
-        </div>
-      )}
     </nav>
   );
 };
