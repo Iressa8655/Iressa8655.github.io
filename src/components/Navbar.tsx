@@ -65,7 +65,17 @@ const Navbar = () => {
               );
             }
             return (
-              <Link key={tab.href} to={tab.href} className={tabClass(active)}>
+              <Link
+                key={tab.href}
+                to={tab.href}
+                onClick={(e) => {
+                  if (location.pathname === tab.href) {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }
+                }}
+                className={tabClass(active)}
+              >
                 {tab.label}
               </Link>
             );
