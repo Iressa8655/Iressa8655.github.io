@@ -89,15 +89,28 @@ const Navbar = () => {
       {mobileOpen && (
         <div className="md:hidden bg-background/95 backdrop-blur-lg border-t border-border px-6 py-4 space-y-3">
           {subPages.map(page => {
-            const active = location.pathname === page.href;
+            const active = !page.external && location.pathname === page.href;
+            const className = `block w-full text-left text-sm font-medium transition-colors ${
+              active ? 'gradient-text' : 'text-muted-foreground hover:text-foreground'
+            }`;
+            if (page.external) {
+              return (
+                <a
+                  key={page.href}
+                  href={page.href}
+                  onClick={() => setMobileOpen(false)}
+                  className={className}
+                >
+                  {page.label}
+                </a>
+              );
+            }
             return (
               <Link
                 key={page.href}
                 to={page.href}
                 onClick={() => setMobileOpen(false)}
-                className={`block w-full text-left text-sm font-medium transition-colors ${
-                  active ? 'gradient-text' : 'text-muted-foreground hover:text-foreground'
-                }`}
+                className={className}
               >
                 {page.label}
               </Link>
