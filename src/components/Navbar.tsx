@@ -53,17 +53,25 @@ const Navbar = () => {
         {/* Desktop */}
         <div className="hidden md:flex items-center gap-1">
           {subPages.map(page => {
-            const active = location.pathname === page.href;
+            const active = !page.external && location.pathname === page.href;
+            const className = `text-sm font-medium px-3 py-2 rounded-full transition-colors ${
+              active
+                ? 'gradient-bg text-white shimmer-btn'
+                : 'text-muted-foreground hover:text-foreground'
+            }`;
+            if (page.external) {
+              return (
+                <a key={page.href} href={page.href} className={className}>
+                  {page.label}
+                </a>
+              );
+            }
             return (
               <Link
                 key={page.href}
                 to={page.href}
                 onClick={() => setMobileOpen(false)}
-                className={`text-sm font-medium px-3 py-2 rounded-full transition-colors ${
-                  active
-                    ? 'gradient-bg text-white shimmer-btn'
-                    : 'text-muted-foreground hover:text-foreground'
-                }`}
+                className={className}
               >
                 {page.label}
               </Link>
