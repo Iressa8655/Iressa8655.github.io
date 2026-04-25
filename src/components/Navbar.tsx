@@ -2,12 +2,14 @@ import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
-const subPages = [
+type SubPage = { label: string; href: string; external?: boolean };
+
+const subPages: SubPage[] = [
   { label: 'CV & Accomplishments', href: '/' },
-  { label: 'Medicine', href: '/medicine' },
-  { label: 'Technology', href: '/technology' },
-  { label: 'Business', href: '/business' },
-  { label: 'Personal Development', href: '/personal-development' },
+  { label: 'Medicine', href: 'https://iressa8655.github.io/digital-garden/Medicine/', external: true },
+  { label: 'Technology', href: 'https://iressa8655.github.io/digital-garden/Technology/', external: true },
+  { label: 'Business', href: 'https://iressa8655.github.io/digital-garden/Business/', external: true },
+  { label: 'Personal Development', href: 'https://iressa8655.github.io/digital-garden/Personal-Development/', external: true },
 ];
 
 const Navbar = () => {
