@@ -1,15 +1,28 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
-type NavTab = { label: string; href: string; external?: boolean };
+type NavTab = { label: string; shortLabel?: string; href: string; external?: boolean };
 
 const tabs: NavTab[] = [
-  { label: 'CV & Accomplishments', href: '/' },
+  { label: 'CV & Accomplishments', shortLabel: 'CV', href: '/' },
   { label: 'Medicine', href: 'https://iressa8655.github.io/digital-garden/Medicine/', external: true },
-  { label: 'Technology', href: 'https://iressa8655.github.io/digital-garden/Technology/', external: true },
-  { label: 'Business', href: 'https://iressa8655.github.io/digital-garden/Business/', external: true },
+  { label: 'Research', href: 'https://iressa8655.github.io/digital-garden/Research/', external: true },
+  { label: 'AI', href: 'https://iressa8655.github.io/digital-garden/AI/', external: true },
+  { label: 'Ventures', href: 'https://iressa8655.github.io/digital-garden/Ventures/', external: true },
   { label: 'Personal Development', href: 'https://iressa8655.github.io/digital-garden/Personal-Development/', external: true },
 ];
+
+const renderLabel = (tab: NavTab) => {
+  if (!tab.shortLabel) {
+    return tab.label;
+  }
+  return (
+    <>
+      <span className="sm:hidden">{tab.shortLabel}</span>
+      <span className="hidden sm:inline">{tab.label}</span>
+    </>
+  );
+};
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -60,7 +73,7 @@ const Navbar = () => {
             if (tab.external) {
               return (
                 <a key={tab.href} href={tab.href} className={tabClass(false)}>
-                  {tab.label}
+                  {renderLabel(tab)}
                 </a>
               );
             }
@@ -76,7 +89,7 @@ const Navbar = () => {
                 }}
                 className={tabClass(active)}
               >
-                {tab.label}
+                {renderLabel(tab)}
               </Link>
             );
           })}
