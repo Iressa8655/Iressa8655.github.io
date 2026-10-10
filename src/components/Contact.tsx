@@ -17,7 +17,7 @@ const Contact = () => {
           Open to research collaborations, clinical AI opportunities, and speaking invitations.
         </p>
         <div className="flex flex-wrap justify-center gap-4">
-          <a href="mailto:i-han.cheng.24@ucl.ac.uk" className="gradient-bg text-white px-6 py-2.5 rounded-full text-sm font-medium shimmer-btn">
+          <a href="mailto:i-han.cheng@ndorms.ox.ac.uk" className="gradient-bg text-white px-6 py-2.5 rounded-full text-sm font-medium shimmer-btn">
             Email me
           </a>
           <a href="https://www.linkedin.com/in/ihanc" target="_blank" rel="noopener" className="px-6 py-2.5 rounded-full text-sm font-medium border-2 text-foreground hover:shadow-md transition-shadow" style={{ borderImage: 'linear-gradient(135deg, #6B3B7E, #C4A882) 1' }}>
